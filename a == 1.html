@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object.defineProperty(this, "a", {
+        //     get(){
+        //         return this.value = this.value? (this.value += 1): 1;
+        //     }
+        // })
+        // console.log(this.a == 1 && this.value == 2 && this.value == 3);
+        const p1 = Promise.resolve("first");
+        const p2 = Promise.resolve("second");
+        const p3 = Promise.reject("third");
+        const p4 = Promise.resolve("forth");
+
+        const a = async () => {
+            let b1 = await Promise.all([p1, p2]);
+            let b2 = await Promise.all([p3, p4]);
+            return [b1, b2];
+        }
+        a().then(res => console.log(res)).catch(err => console.log(err))
+        // third
+    </script>
+</body>
+</html>
