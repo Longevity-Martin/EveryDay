@@ -14,24 +14,36 @@
             background: #ccc;
             perspective: 800px;
         }
+        .wrap{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 200px 300px;
+            transform-style: preserve-3d;
+            transform: rotateX(-25deg) rotateY(50deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .box{
             position: relative;
             width: 200px;
             height: 200px;
-            margin: 200px 600px;
-            transform-style: preserve-3d;
-            transform: rotateX(-25deg) rotateY(25deg);
         }
-        .box img{
+        .wrap img{
             position: absolute;
             left: 0;
             top: 0;
-            display: block;
             width: 100%;
             height: 100%;
+            opacity: .5;
+            transition: all 0.5s;
+        }
+        .wrap .box>img{
+            opacity: 1;
         }
         /* 逆时针为正数，顺时针为负数 */
-        .box img:nth-child(1){
+        .box #box-first{
             transform: translateZ(100px);
         }
         .box img:nth-child(2){
@@ -49,17 +61,72 @@
         .box img:nth-child(6){
             transform: rotateX(-90deg) translateZ(100px);
         }
+
+
+        .wrap img:nth-of-type(1){
+            transform: translateZ(200px);
+        }
+        .wrap>img:nth-of-type(2){
+            transform: rotateY(90deg) translateZ(200px);
+        }
+        .wrap>img:nth-of-type(3){
+            transform: translateZ(-200px);
+        }
+        .wrap>img:nth-of-type(4){
+            transform: rotateY(-90deg) translateZ(200px);
+        }
+        .wrap>img:nth-of-type(5){
+            transform: rotateX(90deg) translateZ(200px);
+        }
+        .wrap>img:nth-of-type(6){
+            transform: rotateX(-90deg) translateZ(200px);
+        } 
+
+
+        .wrap:hover>img:nth-of-type(1){
+            transform: translateZ(300px);
+        }
+        .wrap:hover>img:nth-of-type(2){
+            transform: rotateY(90deg) translateZ(300px);
+        }
+        .wrap:hover>img:nth-of-type(3){
+            transform: translateZ(-300px);
+        }
+        .wrap:hover>img:nth-of-type(4){
+            transform: rotateY(-90deg) translateZ(300px);
+        }
+        .wrap:hover>img:nth-of-type(5){
+            transform: rotateX(90deg) translateZ(300px);
+        }
+        .wrap:hover>img:nth-of-type(6){
+            transform: rotateX(-90deg) translateZ(300px);
+        } 
     </style>
 </head>
 <body>
-    <div class="box">
-        <img src="./img/1.jpg" alt="">
-        <img src="./img/2.jpg" alt="">
-        <img src="./img/3.jpg" alt="">
-        <img src="./img/4.jpg" alt="">
-        <img src="./img/5.jpg" alt="">
-        <img src="./img/6.jpg" alt="">
-
+    <div class="wrap">
+        <div class="box">
+            <img id="box-first" src="./img/1.jpg" alt="">
+            <img src="./img/2.jpg" alt="">
+            <img src="./img/3.jpg" alt="">
+            <img src="./img/4.jpg" alt="">
+            <img src="./img/5.jpg" alt="">
+            <img src="./img/6.jpg" alt="">
+        </div>
+        
+        <img src="./img/7.jpg" alt="">
+        <img src="./img/8.jpg" alt="">
+        <img src="./img/9.jpg" alt="">
+        <img src="./img/10.jpg" alt="">
+        <img src="./img/11.jpg" alt="">
+        <img src="./img/12.jpg" alt="">
     </div>
+    <script>
+        let x = 0, y = 0;
+        let wrap = document.querySelector(".wrap");
+        setInterval(() => {
+            wrap.style.transform = `rotateX(${x+=5}deg) rotate(${y+=5}deg)`;
+        }, 100)
+    </script>
 </body>
 </html>
