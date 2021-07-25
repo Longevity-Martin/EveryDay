@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--使用JS实现从0到1024的累加效果-->
+    <input type="button" id="btn" value="点击单个数字">
+    <div id="number" style="font-size: 50px; border: 1px red solid; width: 200px; height: 200px"></div>
+    <script>
+        const btn = document.getElementById("btn");
+        const number = document.getElementById("number");
+        let num = 0;
+        btn.addEventListener("click", () => {
+            console.log(1)
+            let timer = setInterval(() => {
+                if(num > 1024){
+                    clearInterval(timer);
+                }
+                number.innerHTML = num+=8;
+            }, 10)
+        })
+    </script>
+</body>
+</html>
